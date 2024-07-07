@@ -1,0 +1,9 @@
+.container-card {
+  color: white;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  gap: 2rem;
+  width: 180rem;
+}

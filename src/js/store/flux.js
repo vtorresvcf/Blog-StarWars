@@ -1,45 +1,49 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+  return {
+    store: {
+      favorites: [],
+    },
+    actions: {
+      fetchGet: async (name) => {
+        try {
+          const res = await fetch(`https://www.swapi.tech/api/${name}`);
+          console.log(res);
+          if (!res.ok) throw new Error(`Error fetching ${name}`);
+          const { results } = await res.json();
+          const obj = {};
+          obj[name] = results;
+          setStore(obj);
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+      fetchGetPeopleDetails: async (uid, texto) => {
+        try {
+          const res = await fetch(`https://www.swapi.tech/api/${texto}/${uid}`);
+          if (!res.ok) throw new Error(`Error fetching people`);
+          const data = await res.json();
+          setStore({ details: data.result });
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
-	};
+      addFavorite: (item) => {
+        const lista = getStore().favorites;
+
+        if (lista.filter((e) => e.uid !== item.uid)) {
+          setStore({ favorites: [...getStore().favorites, item] });
+        }
+      },
+      deleteFavorite: (item) => {
+        const lista = getStore().favorites;
+        const filterDelete = lista.filter((e) => e.uid === item.uid);
+        lista.splice(filterDelete, 1);
+        setStore({ favorites: lista });
+      },
+    },
+  };
 };
 
 export default getState;
