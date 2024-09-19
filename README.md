@@ -1,8 +1,8 @@
 # Blog StarWars
 
 Esta página web temática de Star Wars utiliza la API SWAPI.tech para descargar y mostrar datos relacionados con personajes, vehículos y planetas del universo de Star Wars. Los usuarios pueden explorar y buscar entre una amplia gama de personajes, vehículos y planetas, agregando o eliminando elementos de su lista de favoritos para un acceso más rápido.
-<hr>
 
+#
 ![video](https://github.com/user-attachments/assets/b99020a4-86f9-4feb-b1ab-2c5f064783e3)
 
 ## Características:
