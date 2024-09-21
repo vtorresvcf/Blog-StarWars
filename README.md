@@ -6,7 +6,6 @@ Esta página web temática de Star Wars utiliza la API SWAPI.tech para descargar
   <img src="https://github.com/user-attachments/assets/b99020a4-86f9-4feb-b1ab-2c5f064783e3" alt="Descripción del GIF">
 </p>
 
-![video](https://github.com/user-attachments/assets/b99020a4-86f9-4feb-b1ab-2c5f064783e3)
 
 ## Características:
 - Exploración de datos:
